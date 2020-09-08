@@ -11,7 +11,7 @@ class User(models.Model):
     profile_img_url = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.email
 
 
 class UserPost(models.Model):
