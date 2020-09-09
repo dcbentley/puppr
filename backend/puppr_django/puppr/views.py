@@ -1,19 +1,23 @@
-from rest_framework.generic import ListAPIView, RetrieveAPIView
+from rest_framework import generics
 from django.shortcuts import render
-from .models import User, UserPost
-from .serializers import UserSerializer
+from .models import User, Post
+from .serializers import UserSerializer, PostSerializer
 
 # Create your views here.
 
-class UserListView(ListAPIView):
-    queryset = User.object.all()
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetailView(RetrieveAPIView):
-    queryset = User.object.all()
-    serializer_class = UserSerializer
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-# def user_post(request):
-#     user_post = UserPost.objects.all()
-#     return render(request, '')
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer

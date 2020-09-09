@@ -14,9 +14,11 @@ class User(models.Model):
         return self.email
 
 
-class UserPost(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='User')
+class Post(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     post = models.CharField(max_length=280)
 
     def __str__(self):
         return self.post
+
+# this is a test change
