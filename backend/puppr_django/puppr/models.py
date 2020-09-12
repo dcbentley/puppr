@@ -21,3 +21,12 @@ class Post(models.Model):
     def __str__(self):
         return self.post
 
+
+# class UserPosts(models.Model):
+#     def with_counts(self):
+#         from django.db import connection
+#         with connection.cursor() as cursor:
+#             cursor.execute("""
+#             SELECT * FROM puppr_post JOIN puppr_user ON puppr_post.user_id = puppr_user.id    
+#             """)
+#         result_list = []
